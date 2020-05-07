@@ -1,0 +1,362 @@
+.container{	
+	height: 100%;
+	align-content: center;
+}
+
+
+.menu{
+	background-color: black;
+	width: 100%;
+	height: 60px;
+}
+
+.list{
+	color: white;
+	font-size: 15px;
+	padding: 20px;
+	text-decoration: none;
+	float: right;
+	font-family: 'Segoe UI';
+}
+
+.Logos{
+	color: white;
+	font-size: 25px;
+	padding: 18px;
+	padding-left: 40px;
+	float: left;
+	font-style: italic;
+	text-decoration: none;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.list:hover{
+	background-color: purple;
+}
+
+.customer{
+	margin-top: 20px;
+	/* color: white;
+	background-color: #0d0d0d; */
+	font-family: 'Segoe UI';
+	border-collapse: collapse;
+}
+
+.customer td, th{
+	/* border: 1px solid #ddd; */
+	padding: 8px;
+}
+
+.customer tr:nth-child(even){
+	background-color: #ddd;
+}
+
+.customer th{
+	padding-top: 12px;
+	text-align: left;
+	background-color: #0d0d0d;
+	color: white;
+}
+
+.flash{
+	background-color: lightblue;
+	color: blue;
+	font-size: 12px;
+	width: 97%;
+	padding-left: 15px;
+	padding-top: 10px;
+	height: 25px;
+	border-radius: 5px;
+}
+
+.flash-deleted{
+	background-color: maroon;
+	color: white;
+	font-size: 12px;
+	width: 97%;
+	padding-left: 15px;
+	padding-top: 10px;
+	height: 25px;
+	border-radius: 5px;
+}
+
+.flash-fail{
+	background-color: #ffa4ca;
+	color: red;
+	font-size: 12px;
+	width: 97%;
+	padding-top: 10px;
+	padding-left: 15px;
+	height: 25px;
+	border-radius: 5px;
+}
+
+.Content{
+	border-radius: 10px;
+	background-color: white;
+	font-family: 'Segoe UI';
+	width: 90%;
+	margin: 50px;
+	padding-left: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	height:auto;
+}
+/* html{
+	background-size: cover;
+	height: auto;
+} */
+.body-start{
+	background: url('/static/img/login.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 668px;
+	margin: 0;
+}
+
+
+.body-base{
+	background-color: #f2f2f2;
+	margin: 0;
+}
+
+
+.base{
+	background: url('/static/img/login.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	margin: 0;
+}
+
+
+
+.cardLogin{
+	height: auto;
+	border:1px solid rgba(0,0,0,0.5);
+	border-radius: 6px;
+	margin-top: 200px;
+	margin-left: 41%;
+	display: inline-block;
+	width: 250px;
+	padding: 20px;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.cardRegister{
+	height: auto;
+	border:1px solid rgba(0,0,0,0.5);
+	border-radius: 6px;
+	top: 0;
+	margin-top: 100px;
+	margin-left: 40%;
+	display: inline-block;
+	width: 265px;
+	padding: 30px;
+	background-color: maroon;
+}
+
+
+ul li{
+	float: left;
+	padding: 20px;
+	
+}
+
+
+.searchbox{
+	width: 210px;
+	border: 1px solid grey;
+	border-radius: 10px;
+	height: 30px;
+}
+
+.label{
+	font-size: 25px;
+	color: white;
+	text-decoration: none;
+	font-family: 'Segoe UI';
+}
+.form-login{
+	border-radius: 4px;	
+	margin-top:20px;
+	height: 30px;
+	font-size: 14px;
+	padding-left: 15px;
+	width: 235px;
+	border: none;
+	outline: none;
+	background-color:rgba(0,0,0,0.8) ;
+	display: inline-block;
+	color: white;
+	text-align: 20px;
+
+}
+
+
+
+.form-register{
+	border-radius: 4px;	
+	margin-top:20px;
+	height: 25px;
+	font-size: 12px;
+	padding-left: 15px;
+	width: 250px;
+	border: none;
+	outline: none;
+	background-color: white;
+	display: inline-block;
+	color: black;
+	text-align: 20px;
+}
+
+.select-register{
+	border-radius: 4px;	
+	margin-top:20px;
+	height: 25px;
+	font-size: 12px;
+	width: 100%;
+	padding-left: 15px;
+	border: none;
+	outline: none;
+	background-color: white;
+	display: inline-block;
+	color: black;
+	text-align: 20px;
+	
+}
+
+.date-register{
+	border-radius: 4px;
+	padding-left: 15px;
+	border: none;
+	height: 30px;
+	width: 250px;
+	margin-top: 20px;
+}
+
+.date-title{
+	color: white;
+	font-family: 'Segoe UI';
+	margin-bottom: -10px;
+}
+
+
+
+.form-event{
+	border-radius: 4px;
+	padding: 6px;
+	outline: none;
+	border: 1px solid #f1f1f1;
+	outline: none;
+	background-color: white;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+.form-event:hover{
+	border: 1px solid grey;
+}
+
+
+
+.form-edit{
+	border-radius: 4px;
+	padding: 6px;
+	outline: none;
+	border: 1px solid #f1f1f1;
+	outline: none;
+	background-color: white;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+.form-edit:hover{
+	border: 1px solid grey;
+}
+
+
+
+
+
+
+.button-login{
+	border:none;
+	outline: none;
+	color: white;
+	border-radius: 10;
+	background-color:darkviolet;
+	margin-top: 25px;
+	width: 252px;
+	height: 30px;
+	border-radius: 5px;
+}
+
+.button-login:hover{
+	background-color: darkmagenta;
+}
+
+.button-search{
+	background-color: red;
+	color: white;
+	border: none;
+	padding: 8px;
+	border-radius: 5px;
+}
+
+.button-register{
+	border:none;
+	outline: none;
+	color: white;
+	border-radius: 10;
+	background-color:darkred;
+	margin-top: 20px;
+	width: 252px;
+	height: 30px;
+	border-radius: 5px;
+}
+
+.button-register:hover{
+	background-color: red;
+}
+
+.button-upload{
+	background-color: seagreen;
+	color: white;
+	border: none;
+	padding: 8px;
+	border-radius: 5px;
+}
+
+.button-edit{
+	background-color: maroon;
+	text-decoration: none;
+	color: white;
+	border: none;
+	padding-top: 3px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-bottom: 3px;
+	border-radius: 4px;
+}
+
+.button-delete{
+	background-color: #dee200;
+	text-decoration: none;
+	color: white;
+	border: none;
+	padding-top: 3px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-bottom: 3px;
+	border-radius: 4px;
+}
+
+p{
+	color: white;
+	font-family: 'Segoe UI';
+}

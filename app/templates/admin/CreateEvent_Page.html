@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block title%}
+	<title>Create - Event</title>
+	{% endblock %}
+</head>
+<body>
+	{% block content %}
+	<form method="POST" enctype="multipart/form-data">
+		<table align="center">
+					<h1 href="" style="text-align: center;">Create New Event</h1>
+			<tr>
+				<td>Nama Event</td>
+				<td><input class="form-event" type="text" name="name" required></td>
+			</tr>
+			<tr>
+				<td>Promotor</td>
+				<td><input class="form-event" type="text" name="promotor" required></td>
+			</tr>
+			<tr>
+				<td>Foto</td>
+				<td><input style="margin-left: 10px;" type="file" name="file" required></td>
+			</tr>
+			<tr>
+				<td>Tanggal Acara</td>
+				<td><input class="form-event" type="date" name="tanggal" required></td>
+			</tr>
+			<tr><td><input type="submit" value="Submit"></td></tr>
+		</table>
+		{% endblock %}
+	</form>
+</body>
+</html>

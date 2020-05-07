@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block title%}
+	<title>Data - Siswa</title>
+	{% endblock %}
+</head>
+<body>
+{% block content %}
+	{% if 'sumbit' %}
+		{% for message in get_flashed_messages() %}
+			{% if message == 'Failed'%}
+	<script type="text/javascript">
+		alert('Upload Fail!!!');
+	</script>
+	<p class="flash-fail">Messages : {{message}} No such file!</p>
+	{% elif message == 'Success Deleted' %}
+	<script type="text/javascript">
+		alert('Delete Success!');
+	</script>
+	{% else%}
+	<script type="text/javascript">
+		alert('Upload Success!!!');
+	</script>
+	<p class="flash">Messages : {{message}}</p>
+
+	{% endif%}
+	{% endfor %}
+	{%endif%}
+	
+	<form method="POST" action="{{url_for('uploadSiswa')}}" enctype="multipart/form-data">
+		<h3>Upload New / Update here!!</h3>
+		<input type="file" name="file">
+		<input type="submit" class="button-upload" value="Upload">
+	</form>
+	<br>
+	<form method="POST" action="{{url_for('search')}}">
+		<label for="">Fillter</label>
+		<select class="searchbox" name="find" required>
+			<option value="">"    Select Here!    "</option>
+			<option value="" disabled>==== Rombel ====</option>
+			<option>RPL XII - 4</option>
+			<option>RPL XII - 2</option>
+			<option value="" disabled>==== Rayon ====</option>
+			<option>Cibedug 1</option>
+		</select>
+		<input type="submit" name="search" class="button-search" value="Search">
+	</form>
+
+	<p style="color: black;">Total : {{ jml }}</p>
+	<br>
+	<table align="center" class="customer">
+
+		{% if 'search' and request.method=='POST'%}
+		<tr>{% for had in had%}
+			<th>{{had}}</th>
+			{%endfor%}
+			<th colspan="2" style="text-align: center;">Action</th>
+		</tr>
+		{% for find in find %}
+		<tr>
+			<td>{{find.nis}}</td>
+			<td>{{find.fullname}}</td>
+			<td>{{find.nickname}}</td>
+			<td>{{find.rombel}}</td>
+			<td>{{find.rayon}}</td>
+			<td>{{find.gender}}</td>
+			<td><a href="/edit/siswa/{{find._id}}" class="button-edit">Edit</a></td>
+			<td><a href="/siswa/delete/{{find._id}}" onclick="return confirm('Are you sure Want to delete this item?');" class="button-delete">Delete</a></td>
+		</tr>
+		{%endfor%}
+		{%elif request.form['find']==''%}
+		<h1>notfound</h1>
+		{%else%}
+		<h1>No data Selected</h1>
+		{%endif%}
+	</table>
+{% endblock %}
+</body>
+</html>

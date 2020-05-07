@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block title%}
+	<title>Data - Petugas</title>
+	{% endblock %}
+</head>
+<body>
+{% block content %}
+	{% if 'sumbit' %}
+	{% for message in get_flashed_messages() %}
+	{% if message == 'Failed'%}
+	<script type="text/javascript">
+		alert('Upload Fail!!!');
+	</script>
+	<p class="flash-fail">Messages : {{message}} No such file!</p>
+
+	{% elif message == 'Success!' %}
+	<script type="text/javascript">
+		alert('Upload Success!!!');
+	</script>
+	<p class="flash">Messages : {{message}}</p>
+	{% elif message == 'Success Deleted'%}
+	<p class="flash-deleted">Messages : {{message}}</p>
+
+	{% endif%}
+	{% endfor %}
+	{%endif%}
+	<form method="POST" enctype="multipart/form-data">
+		<h3>Upload New / Update here!!</h3>
+		<input type="file" name="file">
+		<input type="submit" class="button-upload" name="cari">
+	</form>
+	
+	<br>
+	<table align="center" class="customer">
+		
+		<tr>{% for had in had%}
+			<th>{{had}}</th>
+			{%endfor%}
+			<th colspan="2" style="text-align: center;">Action</th>
+		</tr>
+			{%for tb in data%}
+		<tr>
+			<td>1</td>
+			<td>{{tb.nis}}</td>
+			<td>{{tb.fullname}}</td>
+			<td>{{tb.nickname}}</td>
+			<td>{{tb.rombel}}</td>
+			<td>{{tb.rayon}}</td>
+			<td>{{tb.gender}}</td>
+			<td><a href="" class="button-edit">Edit</a></td>
+			<td><a href="/petugas/delete/{{tb.nis}}" onclick="return confirm('Are you sure Want to delete this item?');" class="button-delete">Delete</a></td>
+		</tr>
+			{%endfor%}
+	</table>
+{% endblock %}
+</body>
+</html>

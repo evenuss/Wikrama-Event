@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login - Page</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+</head>
+<body class="body-start">
+<div class="container">
+	<div class="cardLogin">
+		<div class="label"><center>Sign In</center></div>
+		<time></time>
+		<form method="POST" align="center">
+			<br>
+				<input class="form-login" type="text" name="username" placeholder="Username">
+				<br>
+				<input class="form-login" type="password" name="password" placeholder="password">
+				<br>
+				<input class="button-login" type="submit" name="" value="Submit">
+				<br>
+				<br>
+				{%for message in get_flashed_messages()%}
+				{% if message == 'Failed' %}
+				<script type="text/javascript">
+					alert('Invalid User or Pass!!!');
+				</script>
+					<p>Message : {{message}}</p>
+				{% endif%}
+				{%endfor%}
+				<p>No have account?<a style="color: white;" href="/register"> Sign Up!</a></p>
+		</form>
+	</div>
+</div>
+</body>
+</html>

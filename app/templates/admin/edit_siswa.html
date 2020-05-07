@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit - Siswa</title>
+</head>
+<body>
+    {% block content%}
+    {% for dt in data%}
+        <h3><center>Id : {{dt._id}}</center></h3>
+    <form method="POST">
+        
+        <table align="center">
+            
+            <tr>
+                <td>NIS</td>
+                <td><input type="text" name="nis" class="form-edit" value="{{dt.nis}}" id=""></td>
+            </tr>
+            <tr>
+                <td>Fullname</td>
+                <td><input type="text" name="fullname" class="form-edit" value="{{dt.fullname}}" id=""></td>
+            </tr>
+            <tr>
+                <td>Rombel</td>
+                <td>
+                    <select name="rombel" class="form-edit" id="">
+                        <option value="{{dt.rombel}}">-> {{dt.rombel}} <-</option>
+                        <option>RPL XII - 2</option>
+                        <option>RPL XII - 4</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Rayon</td>
+                <td>
+                    <select class="form-edit" name="rayon" id="">
+                        <option value="{{dt.rayon}}">-> {{dt.rayon}} <-</option>
+                        {%for ry in rayon%}
+                            <option value="{{ry.name}}">{{ry.name}}</option>
+                        {%endfor%}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <select class="form-edit" name="gender" id="">
+                        <option value="{{dt.gender}}">-> {{dt.gender}} <-</option>
+                        <option>Perempuan</option>
+                        <option>Laki-Laki</option>
+                    </select>
+                </td>
+            </tr>            
+            {%endfor%}
+        </table>
+        <br>
+        <center>
+            <input style="width: 100px; height: 30px;" type="submit" value="Submit" onclick="return confirm('Are you sure to Update this document!');">
+        </center>
+    </form>
+    {%endblock%}
+</body>
+</html>

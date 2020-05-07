@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    
+    {%block title%}
+
+    {%endblock%}
+</head>
+<body class="body-base">
+<div class="container">
+    <div class="menu">
+        <a class="Logos">AttendChecker</a>
+        <a href="{{url_for('LogOut')}}" class="list">Logout</a>
+        <a href="{{url_for('uploadSiswa')}}" class="list">Siswa</a>
+        <a href="{{url_for('uploadCSV')}}" class="list">Operator</a>
+        <a href="{{url_for('CreateEvent')}}" class="list">Create Event</a>
+        <a href="{{url_for('Dashboard')}}" class="list">Dashboard</a>
+    </div>
+    <div class="Content">
+       
+        {% block content%}
+            Selamat Datang ! <strong>{{session['name']}}</strong>
+        {% endblock %}
+    </div>
+   
+</div>
+</body>
+</html>
