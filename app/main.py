@@ -48,6 +48,7 @@ def Register():
 			'gender':req['gender'],
 			'username':req['username'],
 			'password':pw_has,
+			'verified':False
 		})
 		flash('Success')
 	else:
@@ -64,16 +65,27 @@ def allowed_file(filename):
 @app.route('/newevent', methods=['POST','GET'])
 def CreateEvent():
 	req = request.form
-	ie = mongo.db.event.count({})
-	nb = ie + 1
-	cd = 'EV'+str(nb)
 	if request.method == 'POST':
-		new = mongo.db.event.insert({
-			'eventId':'cd',
-			'name': req['name'],
-			'foto': request.files['file'],
-			'tanggal': req['tanggal']
-		})
+		# check if the post request has the file part
+		if 'file' not in request.files:
+			flash('No file part')
+			return redirect(request.url)
+		file = request.files['file']
+		# if user does not select file, browser also
+		# submit an empty part without filename
+		if file.filename == '':
+			flash('No selected file')
+			return redirect(request.url)
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			new = mongo.db.event.insert({
+				'name': req['name'],
+				'foto': filename,
+				'date': req['tanggal']
+			})
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			
+
 	return render_template('admin/CreateEvent_Page.html')
 
 
@@ -154,6 +166,20 @@ def uploadSiswa():
 
 
 
+@app.route('/generate', methods=['GET','POST'])
+def genQr():
+	find = mongo.db.siswa.find()
+	for rec in find:
+		img_bg = Image.open('static/img/Picture1.png').crop((90,0,170,80)).resize((50,50))
+		data = rec['nis']
+		filename = rec['fullname']+'.png'
+		img = qrcode.make(data)
+		pos = ((img.size[0] - img_bg.size[0]) // 2 ,(img.size[1] - img_bg.size[1]) // 2)
+		img.paste(img_bg,pos)
+		img.save('./static/img/qr/'+filename)
+	return 'success'
+
+
 
 
 # UPLOAD NEW OPERATOR
@@ -221,14 +247,17 @@ def uploadCSV():
 @app.route('/dashboard',methods=['POST','GET'])
 def Dashboard():
 	if 'login' in session:
-		pass
+		records = mongo.db.event.find()
 	else:
 		return redirect(url_for('Login'))
-	return render_template('base.html')
+	return render_template('base.html',records=records)
 
 
 
-
+@app.route('/event/<ids>',methods=['POST','GET'])
+def delEvent(ids):
+	delEvnt = mongo.db.event.remove({'_id':ObjectId(ids)})
+	return redirect(url_for('Dashboard'))
 
 
 
@@ -262,6 +291,29 @@ def delPetugas(nis):
 	print('Messages  : Success Deleted')
 	a = flash('Success Deleted')
 	return redirect(url_for('uploadCSV'))
+
+
+@app.route('/absent/base/<ids>',methods=['GET','POST'])
+def absent(ids):
+	session['id'] = ids
+	return render_template('/admin/absent.html', ids=ids)
+
+@app.route('/absent/data', methods=['GET','POST'])
+def absentD():
+	if not request.form:
+		print(session['id'])
+		return render_template('/admin/absent.html')
+	checkRombel = mongo.db.absent.count({'rombel':request.form['find']})
+	if checkRombel == 0 and request.method=='POST':
+		had = ['Nis','name','Rombel','Rayon']
+		tbc = mongo.db.absent.count({'eventId':ObjectId(session['id']),'rayon':request.form['find']})
+		find = mongo.db.absent.find({'eventId':ObjectId(session['id']),'rayon':request.form['find']})
+	else:
+		had = ['Nis','Fullname','Rombel','Rayon']
+		tbc = mongo.db.absent.count({'eventId':ObjectId(session['id']),'rombel':request.form['find']})
+		find = mongo.db.absent.find({'eventId':ObjectId(session['id']),'rombel':request.form['find']})
+	return render_template('/admin/absent.html', records=find,had=had,jml=tbc)
+
 
 
 

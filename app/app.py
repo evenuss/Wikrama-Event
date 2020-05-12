@@ -1,12 +1,15 @@
 from flask import *
 from flask_pymongo import *
 from flask_mail import *
-from datetime import *
-from bson.objectid import ObjectId
 from flask_bcrypt import *
+from datetime import *
+from PIL import Image
+from bson.objectid import ObjectId
+from werkzeug.utils import secure_filename
 import pandas as pd
 import os
 import uuid
+import qrcode
 
 
 app = Flask(__name__)

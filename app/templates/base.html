@@ -15,14 +15,23 @@
         <a class="Logos">AttendChecker</a>
         <a href="{{url_for('LogOut')}}" class="list">Logout</a>
         <a href="{{url_for('uploadSiswa')}}" class="list">Siswa</a>
-        <a href="{{url_for('uploadCSV')}}" class="list">Operator</a>
+        <!-- <a href="{{url_for('uploadCSV')}}" class="list">Operator</a> -->
         <a href="{{url_for('CreateEvent')}}" class="list">Create Event</a>
         <a href="{{url_for('Dashboard')}}" class="list">Dashboard</a>
     </div>
     <div class="Content">
        
         {% block content%}
-            Selamat Datang ! <strong>{{session['name']}}</strong>
+            <div>Selamat Datang ! <strong>{{session['name']}}</strong></div>
+        {% for rec in records%}
+        <div class="card-event">
+            <img src="/static/img/{{rec.foto}}" class="card-picture" alt="">
+            <strong><p class="card-title">{{rec.name}}</p></strong>
+            <br>
+            <a href="/absent/base/{{rec._id}}" class="button-see">See more!</a>
+            <a href="/event/{{rec._id}}" onclick="return confirm('Are you sure Want to delete this item?');" class="button-delete" style="float: right; margin-right:10px;margin-top: 20px;">Delete</a>
+        </div>
+        {%endfor%}
         {% endblock %}
     </div>
    

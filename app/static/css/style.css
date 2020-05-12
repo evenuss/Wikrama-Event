@@ -356,7 +356,58 @@ ul li{
 	border-radius: 4px;
 }
 
+.button-see{
+	text-decoration: none;
+	background-color: dodgerblue;
+	margin-left: 20px;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.button-submit{
+	background-color: dodgerblue;
+	text-decoration: none;
+	color: white;
+	border: none;
+	padding-top: 3px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-bottom: 3px;
+	border-radius: 4px;
+}
+
+
 p{
 	color: white;
 	font-family: 'Segoe UI';
+}
+
+.card-event{
+	background-color: white;
+	margin-top: 50px;
+	width: 252px;
+	margin-left: 30px;
+	color: white;
+	font-family: 'Segoe UI';
+	border-radius: 5px;
+	float: left;
+	height: 320px;
+}
+
+.card-title{
+	color: black;
+	padding-left: 21px;
+	margin-top: 15px;
+	margin-bottom: 5px;
+
+}
+
+
+.card-picture{
+	width: 250px;
+	height: 200px;
+	border:solid white 1px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }

@@ -1,0 +1,49 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%block content%}
+    <form method="POST" action="{{url_for('absentD')}}">
+		<label for="">Fillter</label>
+		<select class="searchbox" name="find" required>
+			<option value="">"    Select Here!    "</option>
+			<option value="" disabled>==== Rombel ====</option>
+			<option>RPL XII - 4</option>
+			<option>RPL XII - 2</option>
+			<option value="" disabled>==== Rayon ====</option>
+			<option>Cibedug 1</option>
+		</select>
+		<input type="submit" name="search" class="button-search" value="Search">
+	</form>
+
+	<p style="color: black;">Total : {{ jml }}</p>
+	<br>
+	<table align="center" class="customer">
+		{% if 'search' and request.method=='POST'%}
+		<tr>{% for had in had%}
+			<th>{{had}}</th>
+			{%endfor%}
+    	</tr>
+		{% for rec in records %}
+		<tr>
+			<td>{{rec.nis}}</td>
+			<td>{{rec.name}}</td>
+			<td>{{rec.rombel}}</td>
+			<td>{{rec.rayon}}</td>
+		</tr>
+		{%endfor%}
+		{%elif request.form['find']==''%}
+		<h1>notfound</h1>
+		{%else%}
+		<h1>No data Selected</h1>
+		{%endif%}
+	</table>
+{% endblock %}
+
+</body>
+</html>
