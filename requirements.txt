@@ -24,7 +24,7 @@ pandas==1.0.3
 pika==1.1.0
 psycopg2==2.8.5
 pycparser==2.20
-PyJWT==1.7.1
+PyJWT==2.4.0
 pymongo==3.10.1
 python-dateutil==2.8.1
 python-editor==1.0.4
