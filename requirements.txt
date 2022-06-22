@@ -19,7 +19,7 @@ Jinja2==2.11.2
 kafka-python==2.0.1
 Mako==1.1.2
 MarkupSafe==1.1.1
-numpy==1.18.3
+numpy==1.22.0
 pandas==1.0.3
 pika==1.1.0
 psycopg2==2.8.5
